@@ -20,6 +20,7 @@ export default function PokemonDetail({ twentyPokemons }) {
     });
 
     async function fetchData() {
+
       const {data }= await client.query({
         query: gql`
         query pokemon{
