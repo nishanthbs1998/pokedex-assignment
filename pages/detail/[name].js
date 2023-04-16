@@ -135,7 +135,6 @@ export default function PokemonDetail({ twentyPokemons }) {
             </div>
 
             <Details
-              twentyPokemons={twentyPokemons}
               currentData={currentData}
               name={name} 
             />

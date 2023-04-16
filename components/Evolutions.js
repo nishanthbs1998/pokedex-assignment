@@ -33,13 +33,13 @@ const Evolutions = ({ setIsEvo, name }) => {
       name,
     },
   });
-  console.log(data);
+  
   return (
     <div
       className=" flex lg:flex-row flex-col rounded-md px-5 py-2 w-full items-center justify-center gap-5 mt-2 bg-[#616161]"
-      onClick={() => setIsEvo(false)}
     >
-      <div className="flex flex-col items-center p-3">
+      <div className="flex flex-col gap-2 items-center p-3">
+        <p className="text-2xl self-start font-medium text-white">Evolutions</p>
         <img
           className="h-28 w-28  lg:h-44 lg:w-44 rounded-full bg-inherit"
           src={data?.pokemon?.image}
@@ -51,8 +51,9 @@ const Evolutions = ({ setIsEvo, name }) => {
           </p>
           <p className="text-[#A4AC9E] font-medium">#{data?.pokemon?.number}</p>
           <div className="flex gap-2">
-            {data?.pokemon?.types?.map((type) => (
+            {data?.pokemon?.types?.map((type,ind) => (
               <p
+              key={ind}
                 className={
                   type === "Poison"
                     ? "bg-[#B97FC9] rounded-md px-2 text-white py-1"
@@ -81,8 +82,8 @@ const Evolutions = ({ setIsEvo, name }) => {
       </div>
 
       <div className="flex lg:flex-row flex-col gap-5   items-center justify-center ">
-        {data?.pokemon?.evolutions?.map((evo) => (
-          <div className="flex flex-col items-center  p-3">
+        {data?.pokemon?.evolutions?.map((evo,ind) => (
+          <div key={ind} className="flex flex-col items-center  p-3">
             <img
               className="rounded-full h-28 w-28  lg:h-44 lg:w-44"
               src={evo.image}
@@ -92,8 +93,9 @@ const Evolutions = ({ setIsEvo, name }) => {
               <p className="text-white text-xl font-medium">{evo?.name}</p>
               <p className="text-[#A4AC9E] font-medium">#{evo.number}</p>
               <div className="flex gap-2">
-                {evo?.types?.map((type) => (
+                {evo?.types?.map((type,ind) => (
                   <p
+                  key={ind}
                     className={
                       type === "Poison"
                         ? "bg-[#B97FC9] rounded-md px-2 text-white py-1"

@@ -11,8 +11,8 @@ const Details = ({ currentData, name }) => {
       {currentData?.length ? (
         currentData
           ?.filter((val) => val.name === name)
-          .map((val) => (
-            <div className="flex flex-col items-center gap-10">
+          .map((val,ind) => (
+            <div key={ind} className="flex flex-col items-center gap-10">
               <div className="mb-10">
                 <p className="text-[2.5rem]">{val.name}</p>
               </div>
@@ -26,8 +26,9 @@ const Details = ({ currentData, name }) => {
                       <p className="text-xl font-semibold">Resistance</p>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {val.resistant.map((val) => (
+                      {val.resistant.map((val,ind) => (
                         <p
+                        key={ind}
                           className={
                             // "py-1 px-2
                             val === "Poison"
@@ -88,8 +89,9 @@ const Details = ({ currentData, name }) => {
                       <p className="flex gap-2"></p>
                     </div>
                     <div className="flex gap-2">
-                      {val.types.map((val) => (
+                      {val.types.map((val,ind) => (
                         <p
+                        key={ind}
                           className={
                             // "py-1 px-2
                             val === "Poison"
@@ -120,8 +122,9 @@ const Details = ({ currentData, name }) => {
                         <p className="text-xl font-semibold">Weakness</p>
                       </div>
                       <div className="flex gap-2 flex-wrap">
-                        {val.weaknesses.map((val) => (
+                        {val.weaknesses.map((val,ind) => (
                           <p
+                          key={ind}
                             className={
                               // "py-1 px-2
                               val === "Poison"
@@ -181,8 +184,9 @@ const Details = ({ currentData, name }) => {
                   <p className="text-xl font-semibold">Resistance</p>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {currentData?.resistant.map((val) => (
+                  {currentData?.resistant.map((val,ind) => (
                     <p
+                    key={ind}
                       className={
                         // "py-1 px-2
                         val === "Poison"
@@ -245,8 +249,9 @@ const Details = ({ currentData, name }) => {
                   <p className="flex gap-2"></p>
                 </div>
                 <div className="flex gap-2">
-                  {currentData?.types.map((val) => (
+                  {currentData?.types.map((val,ind) => (
                     <p
+                    key={ind}
                       className={
                         // "py-1 px-2
                         val === "Poison"
@@ -277,8 +282,9 @@ const Details = ({ currentData, name }) => {
                     <p className="text-xl font-semibold">Weakness</p>
                   </div>
                   <div className="flex gap-2 flex-wrap">
-                    {currentData?.weaknesses.map((val) => (
+                    {currentData?.weaknesses.map((val,ind) => (
                       <p
+                      key={ind}
                         className={
                           // "py-1 px-2
                           val === "Poison"
