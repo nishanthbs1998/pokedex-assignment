@@ -1,15 +1,14 @@
 import { gql, ApolloClient, InMemoryCache } from "@apollo/client";
-import client from "../../apollo-client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import Details from "../../components/Details";
 export default function PokemonDetail({ twentyPokemons }) {
-   const router = useRouter();
+  const router = useRouter();
 
-  const [name,setName]=useState()
-  const [currentData,setCurrentData]=useState()
-   
+  const [name, setName] = useState();
+  const [currentData, setCurrentData] = useState();
+
   useEffect(() => {
     const client = new ApolloClient({
       uri: "https://graphql-pokemon2.vercel.app/",
@@ -17,8 +16,7 @@ export default function PokemonDetail({ twentyPokemons }) {
     });
 
     async function fetchData() {
-
-      const {data }= await client.query({
+      const { data } = await client.query({
         query: gql`
         query pokemon{
   pokemon(name: "${name}"){
@@ -45,117 +43,106 @@ export default function PokemonDetail({ twentyPokemons }) {
 }
         `,
       });
-      setCurrentData(data.pokemon)
-      console.log("called")
-     // const res=await data.pokemon
-      //setPokemons((prev)=>[...prev,data.pokemon]);
-      //console.log("fetched: ", realTimePokemon);
-      
+      setCurrentData(data.pokemon);
     }
-    if(twentyPokemons?.filter(val=>val.name===name).length===0)
-      fetchData()
-      else
-      setCurrentData(twentyPokemons)
-    
- 
+    if (twentyPokemons?.filter((val) => val.name === name).length === 0)
+      fetchData();
+    else setCurrentData(twentyPokemons);
   });
 
-  useEffect(()=>{
-    setName(router.query.name)
-  },[router.query.name])
-  
-  
+  useEffect(() => {
+    setName(router.query.name);
+  }, [router.query.name]);
 
   return (
-    
-      <div>
-        <div className="flex justify-center w-full border-2 border-solid border-gray-250">
-          <img
-            className="border hover:cursor-pointer  shadow-[0px_0px_10px_5px_rgba(0,0,0,0.3)]  pt-1 pb-1 pl-2 pr-2 "
-            src="/pokemonLogo.png"
-            alt="pokemon logo"
-          />
-          <img
-            className="border hover:cursor-pointer  pt-1 pb-1 pl-2 pr-2 "
-            src="/pikachu.png"
-            alt="pikachu"
-          />
-          <img
-            className="border hover:cursor-pointer  pt-1 pb-1 pl-2 pr-2 "
-            src="/about.png"
-            alt="About Us"
-          />
-          <img
-            className="hidden lg:inline-block hover:cursor-pointer p-1 "
-            src="/sv1.png"
-            alt="scarlet"
-          />
-          <img
-            className="hidden lg:inline-block hover:cursor-pointer p-1 "
-            src="/sv2.jpg"
-            alt="scarlet"
-          />
-          <img
-            className="hidden lg:inline-block hover:cursor-pointer p-1 "
-            src="/unite.jpg"
-            alt="Unite"
-          />
-        </div>
+    <div>
+      <div className="flex justify-center w-full border-2 border-solid border-gray-250">
+        <img
+          className="border hover:cursor-pointer  shadow-[0px_0px_10px_5px_rgba(0,0,0,0.3)]  pt-1 pb-1 pl-2 pr-2 "
+          src="/pokemonLogo.png"
+          alt="pokemon logo"
+        />
+        <img
+          className="border hover:cursor-pointer  pt-1 pb-1 pl-2 pr-2 "
+          src="/pikachu.png"
+          alt="pikachu"
+        />
+        <img
+          className="border hover:cursor-pointer  pt-1 pb-1 pl-2 pr-2 "
+          src="/about.png"
+          alt="About Us"
+        />
+        <img
+          className="hidden lg:inline-block hover:cursor-pointer p-1 "
+          src="/sv1.png"
+          alt="scarlet"
+        />
+        <img
+          className="hidden lg:inline-block hover:cursor-pointer p-1 "
+          src="/sv2.jpg"
+          alt="scarlet"
+        />
+        <img
+          className="hidden lg:inline-block hover:cursor-pointer p-1 "
+          src="/unite.jpg"
+          alt="Unite"
+        />
+      </div>
 
-        <div className="flex justify-center bg-white lg:bg-[#2F2F2F] min-h-screen">
-          {/*Main Content container */}
-          <div className="flex flex-col relative items-center w-5/6 bg-white">
-            {/*center content container*/}
-            <div className="absolute  top-28 left-0 flex flex-col z-10">
-              {/*Login/search */}
-              <div className="hidden lg:fixed lg:block">
-                <div className="pr-1 pl-1 pt-8 pb-8 rounded-tr-lg text-xs font-bold bg-[#54B564] text-white">
-                  Log In
-                </div>
-                <div className="pr-1 pl-1 pt-4 pb-4 rounded-br-lg text-xs bg-[#616161] text-white">
-                  Search
-                </div>
+      <div className="flex justify-center bg-white lg:bg-[#2F2F2F] min-h-screen">
+        {/*Main Content container */}
+        <div className="flex flex-col relative items-center w-5/6 bg-white">
+          {/*center content container*/}
+          <div className="absolute  top-28 left-0 flex flex-col z-10">
+            {/*Login/search */}
+            <div className="hidden lg:fixed lg:block">
+              <div className="pr-1 pl-1 pt-8 pb-8 rounded-tr-lg text-xs font-bold bg-[#54B564] text-white">
+                Log In
+              </div>
+              <div className="pr-1 pl-1 pt-4 pb-4 rounded-br-lg text-xs bg-[#616161] text-white">
+                Search
               </div>
             </div>
-            {/*login/search end */}
-            <div className="flex flex-col items-center  bg-white h-min">
-              {/*Pokemon cards container */}
-              <div className="absolute hidden lg:flex  w-screen min-h-[5rem] top-0 bg-white"></div>
+          </div>
+          {/*login/search end */}
+          <div className="flex flex-col items-center  bg-white h-min">
+            {/*Pokemon cards container */}
+            <div className="absolute hidden lg:flex  w-screen min-h-[5rem] top-0 bg-white"></div>
 
-              <div className=" justify-center hidden lg:flex w-full sticky top-0 bg-white">
-                {/*second nav */}
-                <div className=" border-b-[6px] rounded-l sticky border-[#919191]  pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
-                  Home
-                </div>
-                <div className=" border-b-[6px] border-[#E33508] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
-                  Pokedex
-                </div>
-                <div className=" border-b-[6px] border-[#EE6B2F] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
-                  Video Games & Apps
-                </div>
-                <div className=" border-b-[6px] border-[#E6BC2F] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
-                  Trading Card Game
-                </div>
-                <div className=" border-b-[6px] border-[#4DAD5B] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
-                  Pokemon TV
-                </div>
-                <div className=" border-b-[6px] border-[#30A7D7] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
-                  Play! Pokemon Events
-                </div>
-                <div className=" border-b-[6px] rounded-r border-[#1B53BA] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
-                  News
-                </div>
+            <div className=" justify-center hidden lg:flex w-full sticky top-0 bg-white">
+              {/*second nav */}
+              <div className=" border-b-[6px] rounded-l sticky border-[#919191]  pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
+                Home
               </div>
-              
-              <Details twentyPokemons={twentyPokemons} currentData={currentData} name={name} //nameVal={"Magnemite"}
-               />
-
-              {/* <div>pagination</div> */}
+              <div className=" border-b-[6px] border-[#E33508] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
+                Pokedex
+              </div>
+              <div className=" border-b-[6px] border-[#EE6B2F] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
+                Video Games & Apps
+              </div>
+              <div className=" border-b-[6px] border-[#E6BC2F] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
+                Trading Card Game
+              </div>
+              <div className=" border-b-[6px] border-[#4DAD5B] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
+                Pokemon TV
+              </div>
+              <div className=" border-b-[6px] border-[#30A7D7] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
+                Play! Pokemon Events
+              </div>
+              <div className=" border-b-[6px] rounded-r border-[#1B53BA] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
+                News
+              </div>
             </div>
+
+            <Details
+              twentyPokemons={twentyPokemons}
+              currentData={currentData}
+              name={name} 
+            />
           </div>
         </div>
       </div>
-    
+    </div>
   );
 }
 // }
@@ -200,8 +187,6 @@ export async function getStaticProps() {
   };
 }
 
-
-
 export async function getStaticPaths() {
   return {
     paths: [
@@ -225,7 +210,6 @@ export async function getStaticPaths() {
       { params: { name: "Pidgeot" } },
       { params: { name: "Rattata" } },
       { params: { name: "Raticate" } },
-     
     ],
     fallback: true,
   };

@@ -1,21 +1,15 @@
-import Pokemons from "../components/Pokemons"
+import Pokemons from "../components/Pokemons";
 import { gql, ApolloClient, InMemoryCache } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 export default function Home({ pokemons }) {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(router.query.id);
-  //const [data, setData] = useState();
+
   useEffect(() => {
     setCurrentPage(router.query.id);
   });
 
-  //useEffect(()=>{console.log("hi")})
-
-  useEffect(() => {
-    console.log("currentPage is:", currentPage);
-  }, [currentPage]);
-  
   return (
     <div>
       <div className="flex justify-center w-full  border-2 border-solid border-gray-250">
@@ -100,8 +94,6 @@ export default function Home({ pokemons }) {
             </div>
 
             <Pokemons pokemons={pokemons} currentPage={currentPage} />
-
-            {/* <div>pagination</div> */}
           </div>
         </div>
       </div>
@@ -160,43 +152,3 @@ export async function getStaticPaths() {
     fallback: "blocking",
   };
 }
-
-//   export async function getServerSideProps() {
-//   const client = new ApolloClient({
-//     uri: "https://graphql-pokemon2.vercel.app/",
-//     cache: new InMemoryCache(),
-//   });
-
-//   const { data } = await client.query({
-//     query: gql`
-//       query pokemons {
-//         pokemons(first: 100) {
-//           id
-//           number
-//           name
-//           weight {
-//             minimum
-//             maximum
-//           }
-//           height {
-//             minimum
-//             maximum
-//           }
-//           classification
-//           types
-//           resistant
-//           weaknesses
-//           fleeRate
-//           maxCP
-//           maxHP
-//           image
-//         }
-//       }
-//     `,
-//   });
-//   return {
-//     props: {
-//       pokemons: data.pokemons,
-//     },
-//   };
-// }
