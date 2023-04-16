@@ -1,7 +1,7 @@
 import { gql, ApolloClient, InMemoryCache } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-
+import NavBar from "../../components/NavBar";
 import Details from "../../components/Details";
 export default function PokemonDetail({ twentyPokemons }) {
   const router = useRouter();
@@ -109,30 +109,7 @@ export default function PokemonDetail({ twentyPokemons }) {
             {/*Pokemon cards container */}
             <div className="absolute hidden lg:flex  w-screen min-h-[5rem] top-0 bg-white"></div>
 
-            <div className=" justify-center hidden lg:flex w-full sticky top-0 bg-white">
-              {/*second nav */}
-              <div className=" border-b-[6px] rounded-l sticky border-[#919191]  pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
-                Home
-              </div>
-              <div className=" border-b-[6px] border-[#E33508] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
-                Pokedex
-              </div>
-              <div className=" border-b-[6px] border-[#EE6B2F] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
-                Video Games & Apps
-              </div>
-              <div className=" border-b-[6px] border-[#E6BC2F] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
-                Trading Card Game
-              </div>
-              <div className=" border-b-[6px] border-[#4DAD5B] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
-                Pokemon TV
-              </div>
-              <div className=" border-b-[6px] border-[#30A7D7] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
-                Play! Pokemon Events
-              </div>
-              <div className=" border-b-[6px] rounded-r border-[#1B53BA] pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
-                News
-              </div>
-            </div>
+            <NavBar/>
 
             <Details
               currentData={currentData}

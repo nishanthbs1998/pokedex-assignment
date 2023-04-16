@@ -35,21 +35,25 @@ const Evolutions = ({ setIsEvo, name }) => {
   });
   
   return (
+    <div className="flex flex-col px-5 py-2 bg-[#616161] rounded-md p-2 mt-2">
+    <p className="text-2xl self-start font-medium text-white">Evolutions</p>
     <div
-      className=" flex lg:flex-row flex-col rounded-md px-5 py-2 w-full items-center justify-center gap-5 mt-2 bg-[#616161]"
+      className=" flex lg:flex-row flex-col px-10  w-full items-center justify-center gap-5"
     >
       <div className="flex flex-col gap-2 items-center p-3">
-        <p className="text-2xl self-start font-medium text-white">Evolutions</p>
+        
         <img
           className="h-28 w-28  lg:h-44 lg:w-44 rounded-full bg-inherit"
           src={data?.pokemon?.image}
           alt="stage 1"
         />
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col gap-2 items-center">
+          <div className="flex gap-2 items-center">
           <p className="text-white text-xl font-medium">
             {data?.pokemon?.name}
           </p>
           <p className="text-[#A4AC9E] font-medium">#{data?.pokemon?.number}</p>
+          </div>
           <div className="flex gap-2">
             {data?.pokemon?.types?.map((type,ind) => (
               <p
@@ -89,9 +93,12 @@ const Evolutions = ({ setIsEvo, name }) => {
               src={evo.image}
               alt="consecutive evos"
             />
-            <div className="flex flex-col items-center">
-              <p className="text-white text-xl font-medium">{evo?.name}</p>
+            <div className="flex flex-col gap-2 items-center">
+              <div className="flex gap-2 items-center">
+                <p className="text-white text-xl font-medium">{evo?.name}</p>
               <p className="text-[#A4AC9E] font-medium">#{evo.number}</p>
+              </div>
+              
               <div className="flex gap-2">
                 {evo?.types?.map((type,ind) => (
                   <p
@@ -124,6 +131,7 @@ const Evolutions = ({ setIsEvo, name }) => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

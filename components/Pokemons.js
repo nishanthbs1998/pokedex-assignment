@@ -63,8 +63,9 @@ const Pokemons = ({ pokemons, currentPage }) => {
     <div className="flex flex-col justify-center">
       <div className="flex gap-5 mb-5 justify-center">
         {Array.from({ length: 8 }, (_, index) => index + 1).map((val, ind) => (
+          <Link key={ind} href={`/${parseInt(val)}`}>
           <button
-            key={ind}
+            
             onClick={() => {
               setOffset(() => (val - 1) * 20);
 
@@ -72,8 +73,9 @@ const Pokemons = ({ pokemons, currentPage }) => {
             }}
             className="bg-purple-500 rounded py-1 px-2 text-white"
           >
-            <Link href={`/${parseInt(val)}`}>{val}</Link>
+            {val}
           </button>
+          </Link>
         ))}
       </div>
       <div className="flex flex-wrap gap-5 justify-center  max-w-3xl">
