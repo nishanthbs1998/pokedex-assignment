@@ -18,7 +18,7 @@ export default function Home({ pokemons }) {
   
   return (
     <div>
-      <div className="flex justify-center border-2 border-solid border-gray-250">
+      <div className="flex justify-center w-full  border-2 border-solid border-gray-250">
         <img
           className="border hover:cursor-pointer  shadow-[0px_0px_10px_5px_rgba(0,0,0,0.3)]  pt-1 pb-1 pl-2 pr-2 "
           src="/pokemonLogo.png"
@@ -35,29 +35,29 @@ export default function Home({ pokemons }) {
           alt="About Us"
         />
         <img
-          className="hover:cursor-pointer p-1 "
+          className="hidden lg:inline-block hover:cursor-pointer p-1 "
           src="/sv1.png"
           alt="scarlet"
         />
         <img
-          className="hover:cursor-pointer p-1 "
+          className="hidden lg:inline-block hover:cursor-pointer p-1 "
           src="/sv2.jpg"
           alt="scarlet"
         />
         <img
-          className="hover:cursor-pointer p-1 "
+          className="hidden lg:inline-block hover:cursor-pointer p-1 "
           src="/unite.jpg"
           alt="Unite"
         />
       </div>
 
-      <div className="flex justify-center  bg-[#2F2F2F] min-h-screen">
+      <div className="flex justify-center bg-white lg:bg-[#2F2F2F] min-h-screen">
         {/*Main Content container */}
         <div className="flex flex-col relative items-center w-5/6 bg-white">
           {/*center content container*/}
           <div className="absolute  top-28 left-0 flex flex-col z-10">
             {/*Login/search */}
-            <div className="fixed">
+            <div className="hidden lg:fixed lg:block">
               <div className="pr-1 pl-1 pt-8 pb-8 rounded-tr-lg text-xs font-bold bg-[#54B564] text-white">
                 Log In
               </div>
@@ -69,9 +69,9 @@ export default function Home({ pokemons }) {
           {/*login/search end */}
           <div className="flex flex-col items-center  bg-white h-min">
             {/*Pokemon cards container */}
-            <div className="absolute w-screen min-h-[5rem] top-0 bg-white"></div>
+            <div className="absolute hidden lg:flex w-screen min-h-[5rem] top-0 bg-white"></div>
 
-            <div className="flex justify-center sticky top-0 bg-white">
+            <div className="justify-center hidden lg:flex w-full sticky top-0 bg-white">
               {/*second nav */}
               <div className=" border-b-[6px] rounded-l sticky border-[#919191]  pl-2 pr-2 pt-5 pb-2 w-[7.5rem] text-gray-700 text-center">
                 Home

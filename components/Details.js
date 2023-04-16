@@ -23,13 +23,13 @@ const Details = ({ twentyPokemons, currentData, name }) => {
           .map((val) => (
             <div className="flex flex-col items-center gap-10">
 
-              <div className="mb-20">
+              <div className="mb-10">
                 <p className="text-[2.5rem]">{val.name}</p>
               </div>
 
-              <div className="flex gap-16">
+              <div className="flex flex-col items-center lg:flex-row gap-16">
 
-                <div className="w-[50%] flex flex-col items-center gap-10">
+                <div className="w-full lg:w-[50%] flex flex-col items-center gap-10">
                   <img  src={val.image} alt="pokemon image" />
 
                   <div className="flex flex-col gap-4">
@@ -171,13 +171,13 @@ const Details = ({ twentyPokemons, currentData, name }) => {
       ) : (
              <div className="flex flex-col items-center gap-10">
 
-              <div className="mb-20">
+              <div className="mb-10">
                 <p className="text-[2.5rem]">{currentData?.name}</p>
               </div>
 
-              <div className="flex gap-16">
+              <div className="flex flex-col items-center lg:flex-row gap-16">
 
-                <div className="w-[50%] flex flex-col items-center gap-10">
+                <div className="w-full lg:w-[50%] flex flex-col items-center gap-10">
                   <img  src={currentData?.image} alt="pokemon image" />
 
                   <div className="flex flex-col gap-4">
